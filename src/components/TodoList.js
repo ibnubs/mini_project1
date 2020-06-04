@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export const TodoList = ({task}) => {
+export const TodoList = ({task, deleteTodo}) => {
 
     
 
@@ -92,9 +92,9 @@ export const TodoList = ({task}) => {
 
 }
 
-export default ({task})=> (
+export default ({tasks})=> (
     <Fragment>
-        {(task || []).map((task, index)=> (<Todo task ={task} key={index} />
+        {(tasks || []).map((task, index)=> (<TodoList task ={task} key={index} />
         ))}
     </Fragment>
 );

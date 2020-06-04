@@ -10,6 +10,7 @@ import TodoList from './TodoList';
 
 
 
+
 const useStyles = makeStyles((theme) => ({
     container: {
         display: 'grid',
@@ -50,10 +51,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const ContainerDashboard = ({saveTodo}) => {
+const ContainerDashboard = () => {
     const classes = useStyles();
 
-    const [value, setValue] = useState ('');
+    const [tasks, updateTasks] = useState([])
     
 
 
@@ -67,10 +68,14 @@ const ContainerDashboard = ({saveTodo}) => {
                             <ProfileDasboard />
                         </Paper>
                     </Grid>
+
                     <Grid container item direction={"column"} xs={8}>
                         <Grid item className={classes.margin} >
                             <Paper elevation={3} className={classes.paper}>
-                                <AddTodo />
+                                <AddTodo
+                                    addTodo={task => updateTasks([...tasks, task])}
+                                
+                                />
                             </Paper>
                         </Grid>
                         <Grid item >
@@ -84,10 +89,8 @@ const ContainerDashboard = ({saveTodo}) => {
                                 </Grid>
                             </Paper>
                             
-                            <TodoList />
-                            <TodoList />
-                            <TodoList />
-                            <TodoList />
+                            <TodoList tasks={tasks} />
+
                         </Grid>
                     </Grid>
                 </Grid>
