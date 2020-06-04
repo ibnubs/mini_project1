@@ -76,7 +76,7 @@ export const TodoList = ({task, deleteTodo}) => {
                             inputProps={{ 'aria-label': 'secondary checkbox' }}
                         />
                     </Grid>
-                    <Grid item xs={6} className={classes.textLeft} > <p >{task.text}</p></Grid>
+                    <Grid item xs={6} className={classes.textLeft} > <p> "coba" </p></Grid>
                     <Grid item xs={2} className={classes.iconCenter} >
                         <FormControlLabel
                             control={<Checkbox icon={<StarBorderIcon />} checkedIcon={<StarIcon />} />}
@@ -84,7 +84,11 @@ export const TodoList = ({task, deleteTodo}) => {
                         />
                     </Grid>
                     <Grid item xs={1} className={classes.iconEditDel} > <CreateIcon /> </Grid>
-                    <Grid item xs={1} className={classes.iconEditDel} > <DeleteIcon /> </Grid>
+                    <Grid item xs={1} className={classes.iconEditDel} 
+                        
+                    > 
+                    
+                    <DeleteIcon /> </Grid>
                 </Grid>
             </Paper>
         </Fragment>

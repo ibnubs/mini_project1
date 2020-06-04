@@ -57,7 +57,7 @@ const AddTodo = ({addTodo}) => {
                     id="text"
                     name="text"
                     label="Add Todo"
-                    style={{ width: "50vw", margin: "0 20px" }}
+                    style={{ width: "40vw", margin: "0 20px" }}
                     value={value}
                     onChange={onChange}
                 />

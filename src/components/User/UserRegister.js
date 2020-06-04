@@ -113,7 +113,7 @@ const UserRegister = (props) => {
             console.log(res.headers);
             console.log(res.config);
             
-            props.history.push('/dashboard')
+            props.history.push('/homepage')
         })
         .catch(err => {
             console.log(err);

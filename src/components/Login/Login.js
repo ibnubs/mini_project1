@@ -87,24 +87,6 @@ const Login = (props) => {
         setPassword(value)
     }
 
-
-        // axios({
-        //     method: "POST",
-        //     url: "https://be-mini-project.herokuapp.com/api/user/login",
-        //     data:{
-        //         email: setEmail,
-        //         password: setPassword,
-        //     }
-
-        //     .then(res => {
-        //         console.log(data)
-        //         console.log(res)
-        //     })
-        //     .catch(err => {
-        //         console.log(err)
-        //     })
-        // })
-
     const submit = (e) =>{
             e.preventDefault();
             axios.post("https://be-mini-project.herokuapp.com/api/user/login",{
@@ -123,7 +105,7 @@ const Login = (props) => {
                 }
 
 
-                props.history.push('/dashboard')
+                props.history.push('/homepage')
             })
             .catch(err => {
                 console.log(err);
