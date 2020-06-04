@@ -1,0 +1,73 @@
+import React, { Component, useState } from 'react';
+// import { Link } from 'react-router-dom';
+// import { Button } from '@material-ui/core';
+// import Navbar from '../components/Navbar';
+import ContainerDashboard from '../components/ContainerDashboard';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import { Link } from 'react-router-dom';
+import { Container } from '@material-ui/core';
+
+
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+    menuButton: {
+        marginRight: theme.spacing(2),
+    },
+    title: {
+        flexGrow: 1,
+    },
+}));
+
+
+const Dashboard = (props) => {
+
+
+
+        const classes = useStyles();
+
+        const logout = () => {
+            props.history.push('/')
+        }
+
+        return (
+            <div>
+                {/* <Navbar /> */}
+                <div className={classes.root}>
+                    <AppBar position="static">
+                        <Container>
+                            <Toolbar>
+                                <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                                    <MenuIcon />
+                                </IconButton>
+                                <Typography variant="h6" className={classes.title}>
+                                    Todos
+                            </Typography>
+                                {/* <Link to="/login" > */}
+                                <Button
+                                    variant="contained"
+                                    color="secondary"
+                                    onClick={logout}
+                                >
+                                    Logout
+                                </Button>
+                                {/* </Link> */}
+                            </Toolbar>
+                        </Container>
+                    </AppBar>
+                </div>
+                <ContainerDashboard />
+            </div>
+        )
+    
+}
+
+export default Dashboard

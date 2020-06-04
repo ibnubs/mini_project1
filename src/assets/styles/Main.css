@@ -3,55 +3,21 @@
     text-decoration: none;
 }
 
-.Outer-body{
-    border: 2px solid red;
-    height: 1000px;
-    width: 100%;
-}
-
-.left{
-    background-color: #0078D7;
-    width: 30%;
-    height: 1000px;
-    float: left;
-
-}
-
-.right{
-    background-color: yellow;
-    width: 70%;
-    height: 1000px;
-    float: right;
-}
 
 /* logo-component */
 
-.logo{
+
+
+.logo-new{
     color:#ffffff;
-    margin-left: 20px;
+    top: 2%;
+    left: 4vw;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 3.5vh;
+    position: fixed;
+    color: #0078D7;
+    
 }
-
-/* greething page */
-
-.greet-page{
-    font-size: 64px;
-    color: #ffffff;
-    line-height: 75px;
-    text-align: center;
-    margin-top: 270px;
-    margin-bottom: 30px;
-}
-
-.greet-page-desc {
-    text-align: center;
-    padding: 0px 80px;
-    font-size: 30px;
-    line-height: 35px;
-    color: #ffffff;
-}
-
 
 /* button */
 
@@ -77,91 +43,43 @@
 }
 
 
-
-.btn-in-formSign{
-    background-color: #0078D7 !important; 
-}
-
-
-
-
 /* form-sign */
 
-.form-sign-title{
-    font-size: 64px;
+.form-sign-title-new{
+    font-size: 2vw;
     font-weight: bold;
     color: #0078d7;
 
     text-align: center;
     line-height: 75px;
-    margin-top: 80px;
+    margin-top: 2vh;
 }
 
-.list-social-media{
+
+.desc-info-email-use-new{
+    font-size: 1.2vw;
+    color: #8a8686;
     text-align: center;
-    list-style: none;    
-    
+    margin-top: 30px;
+    font-weight: 600;
 }
 
-.social-media-logo{
-    font-size: 2.5em;
-    font-weight: bold;
-
-    border: 3px solid #c4c4c4;
-    padding: 30px 30px;
-    border-radius: 50%;
-    height: 50px;
-    width: 50px;
-    display: inline-block;
-    margin: 0px 20px;
-}
-
-.social-media-logo a{
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-}
-
-
-.desc-info-email-use{
-    font-size: 30px;
-    color: #c4c4c4;
-    text-align: center;
-    margin-top: 50px;
-}
-
-.btn-form-sign{
-    background-color: #0078D7;
-    color: #ffffff;
-}
 
 
 /* form */
 
 
 
-input{
-    display: block;
-    margin: auto;
-
-    width: 600px;
-    height: 80px;
-
-    border: 2px solid #c4c4c4;
-    border-radius: 10px;
-    margin-bottom: 50px;
-
-    padding: 0 20px;
-
-    line-height: 47px;
+.desc-down{
+    margin-top: 20vh;
+    padding: 0px 2vw; 
 }
 
-input::placeholder{
-    font-size: 1.5rem;
-    color: #c4c4c4;
+.desc-down-reg{
+    margin-top: 14vh;
+    padding: 0px 2vw;
 }
 
-.wrap-from{
-    display: block;    
-    width: 100%;
+.btn-down{
+    margin-top: 70%;
 }
