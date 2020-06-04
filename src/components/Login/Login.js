@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
@@ -7,7 +7,7 @@ import SocialMediaIcon from '../SocialMediaIcon';
 import '../../assets/styles/Main.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { setUserSession } from '../../Utils/Common';
+// import { setUserSession } from '../../Utils/Common';
 // import verifyToken from '../../helpers/verifyToken';
 
 
