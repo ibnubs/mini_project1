@@ -25,11 +25,6 @@ const useStyles = makeStyles((theme) => ({
 const Navbar = () => {
     const classes = useStyles();
 
-    // const logout = (props) =>{
-    //     props.history.push('/')
-    // }
-    
-
     return (
         <div className={classes.root}>
             <AppBar position="static">
@@ -42,11 +37,7 @@ const Navbar = () => {
                             Todos
                         </Typography>
                         {/* <Link to="/login" > */}
-                            <Button 
-                                variant="contained" 
-                                color="secondary"
-                                
-                            >
+                            <Button variant="contained" color="secondary">
                                 Logout
                             </Button>
                         {/* </Link> */}

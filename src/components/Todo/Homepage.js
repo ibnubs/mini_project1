@@ -1,15 +1,8 @@
-import React, {Fragment} from 'react';
-// import { makeStyles } from '@material-ui/core/styles';
-// import AppBar from '@material-ui/core/AppBar';
-// import Toolbar from '@material-ui/core/Toolbar';
-// import Typography from '@material-ui/core/Typography';
-// import Button from '@material-ui/core/Button';
-// import IconButton from '@material-ui/core/IconButton';
+import React, { Fragment } from 'react';
 import MenuIcon from '@material-ui/icons/Menu';
-// import { Container } from '@material-ui/core';
 import Todo from './Todo';
-
-import { IconButton, Button, Typography, Toolbar, AppBar, Container, makeStyles } from "@material-ui/core";
+import ProfileDasboard from '../ProfileDasboard';
+import { IconButton, Button, Typography, Toolbar, AppBar, Container, makeStyles, Grid } from "@material-ui/core";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -24,46 +17,43 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
 const Dashboard = (props) => {
+    const classes = useStyles();
+    const logout = () => {
+        props.history.push('/')
+    }
 
-
-
-        const classes = useStyles();
-
-        const logout = () => {
-            props.history.push('/')
-        }
-
-        return (
-            <Fragment>
-                <div className={classes.root}>
-                    <AppBar position="static">
-                        <Container>
-                            <Toolbar>
-                                <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                                    <MenuIcon />
-                                </IconButton>
-                                <Typography variant="h6" className={classes.title}>
-                                    Todos
+    return (
+        <Fragment>
+            <div className={classes.root}>
+                <AppBar position="static">
+                    <Container>
+                        <Toolbar>
+                            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" style={{outline:'none'}}>
+                                <MenuIcon />
+                            </IconButton>
+                            <Typography variant="h6" className={classes.title}>
+                                Todos
                             </Typography>
-                                <Button
-                                    variant="contained"
-                                    color="secondary"
-                                    onClick={logout}
-                                >
-                                    Logout
-                                </Button>
-                            </Toolbar>
-                        </Container>
-                    </AppBar>
-                </div>
-
-                    <Todo />
-
-            </Fragment>
-        )
-    
+                            <Button variant="contained" color="secondary" onClick={logout} style={{outline:'none'}}>
+                                Logout
+                            </Button>
+                        </Toolbar>
+                    </Container>
+                </AppBar>
+            </div>
+            <Container>
+                <Grid container direction="row">
+                    <Grid item md={4} sm={12} >
+                        <ProfileDasboard />
+                    </Grid>
+                    <Grid item md={8} sm={12}>
+                        <Todo />
+                    </Grid>
+                </Grid>
+            </Container>
+        </Fragment>
+    )
 }
 
 export default Dashboard

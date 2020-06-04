@@ -11,38 +11,40 @@ import StarIcon from '@material-ui/icons/Star';
 import CreateIcon from '@material-ui/icons/Create';
 import Paper from '@material-ui/core/Paper';
 
+
+
 const TodoList = ({ item, onDelete }) => (
-  <Paper elevation={3}>
+
+  <Paper elevation={3} style={{ margin: '10px 20px' }}>
     <List>
-      
-        <ListItem key={item.id.toString()} dense button>
-          <Checkbox tabIndex={-1} disableRipple />
-          <ListItemText primary={item.title} />
-          <ListItemText primary={item.description} />
-          <ListItemSecondaryAction>
-            <IconButton
-              aria-label="Important"
-              onClick={() => {console.log('starticon')}}
-            >
-              <StarIcon />
-            </IconButton>
-            <IconButton
-              aria-label="EditTask"
-              onClick={() => {console.log('editicon')}}
-            >
-              <CreateIcon />
-            </IconButton>
-            <IconButton
-              aria-label="Delete"
-              // onClick={() => {
-              //   deleteTodo(index);
-              // }}
-              onClick={onDelete}
-            >
-              <DeleteIcon />
-            </IconButton>
-          </ListItemSecondaryAction>
-        </ListItem>
+      <ListItem key={item.id.toString()} dense button>
+        <Checkbox tabIndex={-1} disableRipple />
+        <ListItemText primary={item.title} />
+        <ListItemText primary={item.description} style={{textAlign:"left"}} />
+        <ListItemSecondaryAction>
+          <IconButton
+            aria-label="Important"
+            onClick={() => { console.log('starticon') }}
+            style={{outline:'none'}}
+          >
+            <StarIcon />
+          </IconButton>
+          <IconButton
+            aria-label="EditTask"
+            onClick={() => { console.log('editicon') }}
+            style={{outline:'none'}}
+          >
+            <CreateIcon />
+          </IconButton>
+          <IconButton
+            aria-label="Delete"
+            onClick={onDelete}
+            style={{outline:'none'}}
+          >
+            <DeleteIcon />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
 
     </List>
   </Paper>

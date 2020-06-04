@@ -2,14 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { TextField, Paper, Button, Grid } from "@material-ui/core";
 import axios from 'axios';
 
-
-let baseUrl = 'https://be-mini-project.herokuapp.com/api/';
-
-
-
-
-
-
 class TodoInput extends Component {
     state = {
         title: "",
@@ -22,56 +14,48 @@ class TodoInput extends Component {
 
     change = e => {
         this.setState({
-            [e.target.name]:e.target.value
+            [e.target.name]: e.target.value
         })
-        
     }
 
-    submit = async (e) => {
+    submit = (e) => {
+
         console.log('hasil submit cek ', this.state)
-        this.setState({isLoading:true})
-        let token = localStorage.getItem('token')
         e.preventDefault()
-        
-        //create new data
-        // const data = {
-        //     title: this.state.title,
-        //     description: this.state.description,
-        //     due_date: this.state.due_date,
-        // }
-
-        try{
-            const result = await axios.post(`${baseUrl}task/`, 
-            {
-                headers: {
-                    'authorization': token
-                },
-                data: {
-                    'title': this.state.title,
-                    'description': this.state.description,
-                    'due_date': this.state.due_date,
-                }
-            });
-            console.log('post berhasil ', result)
-            this.props.getAll()
-            this.setState({title:'',description:'', due_date:'', isLoading:false})
-            
-        }
-        catch(err){
-            console.log('apakah disini', err)
-        }
+        let token = localStorage.getItem('token')
+        this.setState({ isloading: true })
+        //rendering post for add task
+        axios({
+            method: "POST",
+            url: "https://be-mini-project.herokuapp.com/api/task/",
+            headers: {
+                authorization: token
+            },
+            data: {
+                title: this.state.title,
+                description: this.state.description,
+                due_date: this.state.due_date
+            }
+        })
+            .then(res => {
+                console.log('hasil dari add ', res)
+                this.setState({ loading: false })
+                this.setState({ title: '', description: '', due_date: '', isLoading: false })
+                this.props.getAll()
+            })
+            .catch(err => {
+                this.setState({ loading: false })
+                console.log('erro dari add', err)
+            })
     }
-
-
-
 
     render() {
         return (
             <Fragment>
                 <form onSubmit={this.submit}>
                     <Grid container >
-                        <Paper style={{ margin: 16, padding: 16, width: '100%' }}>
-                            <Grid xs={12} md={12} item style={{ paddingRight: 16, marginBottom: 20 }}>
+                        <Paper style={{ margin: '10px 20px ', padding: 16, width: '100%' }}>
+                            <Grid xs={12} md={12} item style={{ padding: '0px 14px', marginBottom: 20 }}>
                                 <TextField
                                     placeholder="Title"
                                     name="title"
@@ -81,7 +65,7 @@ class TodoInput extends Component {
                                     fullWidth
                                 />
                             </Grid>
-                            <Grid xs={12} md={12} item style={{ paddingRight: 16,  marginBottom: 20 }}>
+                            <Grid xs={12} md={12} item style={{ padding: '0px 14px', marginBottom: 20 }}>
                                 <TextField
                                     placeholder="Description"
                                     name='description'
@@ -91,36 +75,30 @@ class TodoInput extends Component {
                                     fullWidth
                                 />
                             </Grid>
-                            <Grid xs={12} md={12} item style={{ paddingRight: 16, marginBottom: 20 }}>
+                            <Grid xs={12} md={12} item style={{ padding: '0px 14px', marginBottom: 20 }}>
                                 <TextField
                                     placeholder="Due Date"
                                     name="due_date"
-                                    // label="Due Date"
-                                    type="text"
-                                    // defaultValue="mm-dd-yyyy"
+                                    type="date"
                                     fullWidth
-                                    // InputLabelProps={{
-                                    // shrink: true,
-                                    // }}
                                     value={this.state.due_date}
                                     onChange={this.change}
                                 />
                             </Grid>
-                            <Grid xs={12} md={12} item style={{ paddingTop: 20 }}>
+                            <Grid xs={12} md={12} item style={{ padding: '20px 14px 0px 14px' }}>
                                 <Button
                                     fullWidth
                                     color="secondary"
-                                    variant="outlined"
-                                    // onClick={this.submit}
+                                    variant="contained"
                                     type="submit"
+                                    style={{outline:'none'}}
                                 >
-                                    {this.state.isLoading? "loading.." : "Add"}
+                                    {this.state.isLoading ? "loading.." : "Add"}
                                 </Button>
                             </Grid>
                         </Paper>
                     </Grid>
                 </form>
-                
             </Fragment>
         );
     }

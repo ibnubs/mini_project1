@@ -10,19 +10,13 @@ import SocialMediaIcon from '../SocialMediaIcon';
 import '../../assets/styles/Main.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-// import verifyToken from '../../helpers/verifyToken';
-
-
-
 
 
 const useStyles = makeStyles((theme) => ({
     root: {
         height: '100vh',
         backgroundColor: '#e8e4e1',
-
         display: 'grid'
-
     },
 
     paper: {
@@ -30,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-
     },
 
     form: {
@@ -53,7 +46,6 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '80px 8px 80px 8px',
         borderTop: '1px solid #CCCCCC'
 
-
     },
     borderLeft: {
         // border: '1px solid blue',
@@ -70,13 +62,10 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '60px 8px 80px 0px',
     },
 
-
-
 }));
 
 const UserRegister = (props) => {
     const classes = useStyles();
-
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -101,26 +90,23 @@ const UserRegister = (props) => {
 
     const register = (e) => {
         e.preventDefault();
-        axios.post("https://be-mini-project.herokuapp.com/api/user/register",{
+        axios.post("https://be-mini-project.herokuapp.com/api/user/register", {
             'email': email,
             'password': password,
             'name': name
         })
-        .then( res => {
-            console.log(res.data)
-            console.log(res.status)
-            console.log(res.statusText);
-            console.log(res.headers);
-            console.log(res.config);
-            
-            props.history.push('/homepage')
-        })
-        .catch(err => {
-            console.log(err);
-        });
+            .then(res => {
+                console.log(res.data)
+                console.log(res.status)
+                console.log(res.statusText);
+                console.log(res.headers);
+                console.log(res.config);
+                props.history.push('/homepage')
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }
-
-
     return (
         <Fragment>
             <div className={classes.root}>
@@ -130,29 +116,28 @@ const UserRegister = (props) => {
                     alignItems="center"
                     direction='column'
                 >
-                    <Grid item className={classes.borderLeft}
+                    <Grid 
+                        item 
+                        className={classes.borderLeft}
                         sm={12}
-
                     >
                         <p className="form-sign-title-new">Welcome Back!</p>
                         <p className="desc-info-email-use-new desc-down-reg">To keep connected with us please login with your personal info</p>
                         <Link to="/">
                             <Button
                                 type="submit"
-                                
                                 style={{ margin: "29vh 20px 10px 20px", padding: " 0px 0px 0px 0px", height: "50px", width: "25vw" }}
                                 variant="contained"
                                 color="primary"
                                 className={classes.submit}
                             >
                                 Sign In
-                        </Button>
+                            </Button>
                         </Link>
                     </Grid>
                     <Grid item className={classes.borderRight}
                         sm={12}
                     >
-
                         <p className="form-sign-title-new">Sign in to Task Manager</p>
                         <SocialMediaIcon />
                         <p className="desc-info-email-use-new">or use your email account</p>
@@ -201,7 +186,6 @@ const UserRegister = (props) => {
                         <Link to="/dasboard">
                             <Button
                                 type="submit"
-
                                 style={{ margin: "10px 20px 10px 20px", padding: " 0px 0px 0px 0px", height: "50px", width: "25vw" }}
                                 variant="contained"
                                 color="primary"
@@ -212,13 +196,9 @@ const UserRegister = (props) => {
                             </Button>
                         </Link>
                     </Grid>
-
                 </Grid>
-
-
             </div>
         </Fragment>
-
     );
 }
 

@@ -7,8 +7,6 @@ import SocialMediaIcon from '../SocialMediaIcon';
 import '../../assets/styles/Main.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-// import { setUserSession } from '../../Utils/Common';
-// import verifyToken from '../../helpers/verifyToken';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -71,10 +69,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = (props) => {
     const classes = useStyles();
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
     const handleOnChaneEmail = (e) => {
         e.preventDefault();
         const value = e.target.value
@@ -87,46 +83,47 @@ const Login = (props) => {
         setPassword(value)
     }
 
-    const submit = (e) =>{
-            e.preventDefault();
-            axios.post("https://be-mini-project.herokuapp.com/api/user/login",{
+    const submit = (e) => {
+        e.preventDefault();
+        axios.post("https://be-mini-project.herokuapp.com/api/user/login",
+            {
                 'email': email,
                 'password': password
             })
-            .then( res => {
+            .then(res => {
                 console.log(res.data)
                 console.log(res.status)
                 console.log(res.statusText);
                 console.log(res.headers);
                 console.log(res.config);
-                if (res.data.status === "Success"){
+                if (res.data.status === "Success") {
                     localStorage.setItem("token", res.data.data.token)
                     console.log('berhasil')
                 }
-
-
                 props.history.push('/homepage')
             })
             .catch(err => {
                 console.log(err);
             });
-
     }
-    
+
 
 
     return (
         <Fragment>
             <div className={classes.root}>
                 <p className="logo-new"> Todos</p>
-                <Grid container className={classes.border}
+                <Grid 
+                    container 
+                    className={classes.border}
                     justify="center"
                     alignItems="center"
                     direction='column'
                 >
-                    <Grid item className={classes.borderLeft}
+                    <Grid 
+                        item 
+                        className={classes.borderLeft}
                         sm={12}
-
                     >
                         <p className="form-sign-title-new">Hello, Friend!</p>
                         <p className="desc-info-email-use-new desc-down">Enter your personal details and start your journey with us</p>
@@ -140,13 +137,14 @@ const Login = (props) => {
                                 className={classes.submit}
                             >
                                 Sign Up
-                        </Button>
+                            </Button>
                         </Link>
                     </Grid>
-                    <Grid item className={classes.borderRight}
+                    <Grid 
+                        item 
+                        className={classes.borderRight}
                         sm={12}
                     >
-
                         <p className="form-sign-title-new">Sign in to Task Manager</p>
                         <SocialMediaIcon />
                         <p className="desc-info-email-use-new">or use your email account</p>
@@ -179,27 +177,21 @@ const Login = (props) => {
                                 onChange={handleOnChanePassword}
                             />
                         </form>
-                        {/* <Link to="/dasboard"> */}
-                            <Button
-                                type="submit"
-                                
-                                style={{ margin: "10px 20px 10px 20px", padding: " 0px 0px 0px 0px", height: "50px", width:"25vw" }}
-                                variant="contained"
-                                color="primary"
-                                className={classes.submit}
-                                onClick={submit}
-                            >
-                                Sign In
+
+                        <Button
+                            type="submit"
+                            style={{ margin: "10px 20px 10px 20px", padding: " 0px 0px 0px 0px", height: "50px", width: "25vw" }}
+                            variant="contained"
+                            color="primary"
+                            className={classes.submit}
+                            onClick={submit}
+                        >
+                            Sign In
                             </Button>
-                        {/* </Link> */}
                     </Grid>
-
                 </Grid>
-
-
             </div>
         </Fragment>
-
     );
 }
 
