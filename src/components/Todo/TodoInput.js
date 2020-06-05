@@ -20,7 +20,7 @@ class TodoInput extends Component {
 
     submit = (e) => {
 
-        console.log('hasil submit cek ', this.state)
+        // console.log('hasil submit cek ', this.state)
         e.preventDefault()
         let token = localStorage.getItem('token')
         this.setState({ isloading: true })
@@ -38,14 +38,14 @@ class TodoInput extends Component {
             }
         })
             .then(res => {
-                console.log('hasil dari add ', res)
+                // console.log('hasil dari add ', res)
                 this.setState({ loading: false })
                 this.setState({ title: '', description: '', due_date: '', isLoading: false })
                 this.props.getAll()
             })
             .catch(err => {
                 this.setState({ loading: false })
-                console.log('erro dari add', err)
+                // console.log('erro dari add', err)
             })
     }
 

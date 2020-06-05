@@ -57,7 +57,7 @@
 
 
 .desc-info-email-use-new{
-    font-size: 1.2vw;
+    font-size: 20px;
     color: #8a8686;
     text-align: center;
     margin-top: 30px;
@@ -71,13 +71,11 @@
 
 
 .desc-down{
-    margin-top: 20vh;
-    padding: 0px 2vw; 
+    margin-top: 15vh;
 }
 
 .desc-down-reg{
-    margin-top: 14vh;
-    padding: 0px 2vw;
+    margin-top: 3vh;
 }
 
 .btn-down{

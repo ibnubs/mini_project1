@@ -13,23 +13,17 @@ const useStyles = makeStyles((theme) => ({
     root: {
         height: '100vh',
         backgroundColor: '#e8e4e1',
-
         display: 'grid'
-
     },
-
     paper: {
         margin: theme.spacing(8, 4),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-
     },
-
     form: {
         width: '100%', // Fix IE 11 issue.
         marginTop: theme.spacing(1),
-
     },
     border: {
         height: '80vh',
@@ -45,18 +39,13 @@ const useStyles = makeStyles((theme) => ({
         0 100px 80px rgba(0, 0, 0, 0.12)`,
         borderRadius: '80px 8px 80px 8px',
         borderTop: '1px solid #CCCCCC'
-
-
     },
     borderLeft: {
-        // border: '1px solid blue',
         height: '100%',
         width: '50%',
         borderRadius: '80px 0px 0px 8px',
-
     },
     borderRight: {
-        // border: '1px solid blue',
         borderLeft: '1px solid #CCCCCC',
         height: '100%',
         width: '50%',
@@ -91,24 +80,21 @@ const Login = (props) => {
                 'password': password
             })
             .then(res => {
-                console.log(res.data)
-                console.log(res.status)
-                console.log(res.statusText);
-                console.log(res.headers);
-                console.log(res.config);
+                // console.log(res.data)
+                // console.log(res.status)
+                // console.log(res.statusText);
+                // console.log(res.headers);
+                // console.log(res.config);
                 if (res.data.status === "Success") {
                     localStorage.setItem("token", res.data.data.token)
-                    console.log('berhasil')
+                    // console.log('berhasil')
                 }
                 props.history.push('/homepage')
             })
             .catch(err => {
-                console.log(err);
+                // console.log(err);
             });
     }
-
-
-
     return (
         <Fragment>
             <div className={classes.root}>
@@ -118,76 +104,118 @@ const Login = (props) => {
                     className={classes.border}
                     justify="center"
                     alignItems="center"
-                    direction='column'
+                    direction='row'
                 >
                     <Grid 
+                        container
                         item 
                         className={classes.borderLeft}
-                        sm={12}
+                        md={6}
+                        sm={5}
+                        direction="column"
                     >
-                        <p className="form-sign-title-new">Hello, Friend!</p>
-                        <p className="desc-info-email-use-new desc-down">Enter your personal details and start your journey with us</p>
+                        <Grid item>
+                            <p className="form-sign-title-new">Hello, Friend!</p>
+                        </Grid>
+                        <Grid 
+                            item
+                            style={{padding:'0px 20px'}}
+                        >
+                            <p className="desc-info-email-use-new desc-down">
+                                Enter your personal details and start your journey with us
+                            </p>
+                        </Grid>
+                        
                         <Link to="/signup">
-                            <Button
-                                type="submit"
-                                fullWidth
-                                style={{ margin: "13.6vh 20px 10px 20px", padding: " 0px 0px 0px 0px", height: "50px", width: "25vw" }}
-                                variant="contained"
-                                color="primary"
-                                className={classes.submit}
+                            <Grid 
+                                item
+                                style={{padding:'0px 20px'}}
                             >
-                                Sign Up
-                            </Button>
+                                <Button
+                                    type="submit"
+                                    fullWidth
+                                    style={{ marginTop: "143px", padding: " 0px 0px 0px 0px", height: "50px" }}
+                                    variant="contained"
+                                    color="primary"
+                                    className={classes.submit}
+                                >
+                                    Sign Up
+                                </Button>
+                            </Grid>
                         </Link>
                     </Grid>
                     <Grid 
+                        container
                         item 
                         className={classes.borderRight}
-                        sm={12}
+                        md={6}
+                        sm={5}
+                        direction="column"
                     >
-                        <p className="form-sign-title-new">Sign in to Task Manager</p>
-                        <SocialMediaIcon />
-                        <p className="desc-info-email-use-new">or use your email account</p>
+                        <Grid item>
+                            <p className="form-sign-title-new">Sign in to Task Manager</p>
+                        </Grid>
+                        <Grid item>
+                            <SocialMediaIcon />
+                        </Grid>
+                        <Grid item>
+                            <p className="desc-info-email-use-new">or use your email account</p>
+                        </Grid>
                         <form  >
-                            <TextField
-                                variant="outlined"
-                                required
-                                fullWidth
-                                style={{ margin: "30px 20px 10px 20px", padding: " 0px 40px 0px 0px" }}
-                                id="email"
-                                label="Email Address"
-                                name="email"
-                                autoComplete="email"
-                                autoFocus
-                                value={email}
-                                onChange={handleOnChaneEmail}
-                            />
-                            <TextField
-                                variant="outlined"
-                                margin="normal"
-                                required
-                                fullWidth
-                                style={{ margin: "10px 20px 10px 20px", padding: " 0px 40px 0px 0px" }}
-                                name="password"
-                                label="Password"
-                                type="password"
-                                id="password"
-                                autoComplete="current-password"
-                                value={password}
-                                onChange={handleOnChanePassword}
-                            />
+                            <Grid 
+                                item
+                                style={{paddingRight:40}}
+                            >
+                                <TextField
+                                    variant="outlined"
+                                    required
+                                    fullWidth
+                                    style={{ margin: "30px 20px 10px 20px" }}
+                                    id="email"
+                                    label="Email Address"
+                                    name="email"
+                                    autoComplete="email"
+                                    autoFocus
+                                    value={email}
+                                    onChange={handleOnChaneEmail}
+                                />
+                            </Grid>
+                            <Grid 
+                                item
+                                style={{paddingRight:40}}
+                            >
+                                <TextField
+                                    variant="outlined"
+                                    margin="normal"
+                                    required
+                                    fullWidth
+                                    style={{ margin: "10px 20px" }}
+                                    name="password"
+                                    label="Password"
+                                    type="password"
+                                    id="password"
+                                    autoComplete="current-password"
+                                    value={password}
+                                    onChange={handleOnChanePassword}
+                                />
+                            </Grid>
                         </form>
-
-                        <Button
-                            type="submit"
-                            style={{ margin: "10px 20px 10px 20px", padding: " 0px 0px 0px 0px", height: "50px", width: "25vw" }}
-                            variant="contained"
-                            color="primary"
-                            className={classes.submit}
-                            onClick={submit}
+                        <Grid 
+                            item 
+                            style={{paddingRight:40}}
                         >
-                            Sign In
+                            <Button
+                                type="submit"
+                                style={{ margin: "10px 20px" ,height: "50px" }}
+                                variant="contained"
+                                color="primary"
+                                className={classes.submit}
+                                onClick={submit}
+                                fullWidth
+                            >
+                                Sign In
                             </Button>
+                        </Grid>
                     </Grid>
                 </Grid>
             </div>

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
-import TodoListNew from '../TodoListNew';
+import TodoListNew from './TodoListNew';
 import TodoInput from './TodoInput';
 
 
@@ -21,26 +21,26 @@ export class Todo extends Component {
                         'authorization': localStorage.getItem('token')
                     }
                 });
-            console.log('function getAll ajalan ', result)
-            console.log('ini respon', result.data.data)
+            // console.log('function getAll ajalan ', result)
+            // console.log('ini respon', result.data.data)
             this.setState({ task: result.data.data.Search_Result })
         } catch (err) {
-            console.log(err)
+            // console.log(err)
         }
     }
 
     getDeleteItem = async (id) => {
         try {
-            const result = await axios.delete(`${baseUrl}/task/${id}`,
+            await axios.delete(`${baseUrl}/task/${id}`,
                 {
                     headers: {
                         'authorization': localStorage.getItem('token')
                     }
                 });
-            console.log('ini adalah result delete', result)
+            // console.log('ini adalah result delete', result)
             this.setState({ task: this.state.task.filter(item => item.id !== id) })
         } catch (err) {
-            console.log(err)
+            // console.log(err)
         }
     }
 
@@ -50,7 +50,7 @@ export class Todo extends Component {
 
     render() {
         const List = this.state.task.map(item => {
-            console.log(item)
+            // console.log(item)
             return (
                 <TodoListNew
                     item={item}

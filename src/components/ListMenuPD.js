@@ -9,8 +9,6 @@ const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
         backgroundColor: theme.palette.background.paper,
-        
-        
     },
     textAlign:{
         textAlign:'center',
@@ -19,10 +17,6 @@ const useStyles = makeStyles((theme) => ({
         fontSize:44,
     }
 }));
-
-// function ListItemLink(props) {
-//     return <ListItem button component="a" {...props} />;
-// }
 
 export default function ListMenuPD() {
     const classes = useStyles();

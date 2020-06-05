@@ -18,18 +18,15 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#e8e4e1',
         display: 'grid'
     },
-
     paper: {
         margin: theme.spacing(8, 4),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
     },
-
     form: {
         width: '100%', // Fix IE 11 issue.
         marginTop: theme.spacing(1),
-
     },
     border: {
         height: '80vh',
@@ -45,14 +42,12 @@ const useStyles = makeStyles((theme) => ({
         0 100px 80px rgba(0, 0, 0, 0.12)`,
         borderRadius: '80px 8px 80px 8px',
         borderTop: '1px solid #CCCCCC'
-
     },
     borderLeft: {
         // border: '1px solid blue',
         height: '100%',
         width: '50%',
         borderRadius: '80px 0px 0px 8px',
-
     },
     borderRight: {
         // border: '1px solid blue',
@@ -96,15 +91,15 @@ const UserRegister = (props) => {
             'name': name
         })
             .then(res => {
-                console.log(res.data)
-                console.log(res.status)
-                console.log(res.statusText);
-                console.log(res.headers);
-                console.log(res.config);
+                // console.log(res.data)
+                // console.log(res.status)
+                // console.log(res.statusText);
+                // console.log(res.headers);
+                // console.log(res.config);
                 props.history.push('/homepage')
             })
             .catch(err => {
-                console.log(err);
+                // console.log(err);
             });
     }
     return (
@@ -117,22 +112,35 @@ const UserRegister = (props) => {
                     direction='column'
                 >
                     <Grid 
+                        container
                         item 
                         className={classes.borderLeft}
-                        sm={12}
+                        sm={6}
+                        direction="column"
+                        alignItems="stretch"
+                        justify="space-around"
                     >
-                        <p className="form-sign-title-new">Welcome Back!</p>
-                        <p className="desc-info-email-use-new desc-down-reg">To keep connected with us please login with your personal info</p>
+                        <Grid item style={{marginBottom:0, marginTop:-220}}>
+                            <p className="form-sign-title-new">Welcome Back!</p>
+                        </Grid>
+                        <Grid item style={{padding:'0px 20px', marginTop:-50}}>
+                            <p className="desc-info-email-use-new desc-down-reg">
+                                To keep connected with us please login with your personal info
+                            </p>
+                        </Grid>
                         <Link to="/">
-                            <Button
-                                type="submit"
-                                style={{ margin: "29vh 20px 10px 20px", padding: " 0px 0px 0px 0px", height: "50px", width: "25vw" }}
-                                variant="contained"
-                                color="primary"
-                                className={classes.submit}
-                            >
-                                Sign In
-                            </Button>
+                            <Grid item style={{padding:'0px 20px', marginTop:120, marginBottom:-130}}>
+                                <Button
+                                    type="submit"
+                                    style={{ height: "50px" }}
+                                    variant="contained"
+                                    color="primary"
+                                    className={classes.submit}
+                                    fullWidth
+                                >
+                                    Sign In
+                                </Button>
+                            </Grid>
                         </Link>
                     </Grid>
                     <Grid item className={classes.borderRight}
